@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const DB_URL = 'mongodb://localhost:27017/Online_Shop'
+require ('dotenv').config()
+const DB_URL = process.env.DB_URL
 const user_modelSchema = mongoose.Schema(
     {
         username: {
@@ -40,7 +41,7 @@ exports.create_NewUser = async (username, email, password) => {
             });
             
             const save_user = await create_user.save();
-            console.log(" success sign up");
+            console.log(" success sign up"); 
             return save_user;
             
         }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const DB_URL = 'mongodb://localhost:27017/Online_Shop'
+require ('dotenv').config()
+const DB_URL = process.env.DB_URL
 const Product_modelSchema = mongoose.Schema(
   {
     name: String
