@@ -6,5 +6,6 @@ router
     .get('/signup', Auth_controller.get_signup)
     .post('/signup', bodyParser.urlencoded({extended:true}),Auth_controller.post_signup)
     .get('/login', Auth_controller.get_login)
-    .post('/login', bodyParser.urlencoded({extended:true}),Auth_controller.post_login)
+    .post('/login', bodyParser.urlencoded({extended:true}),Auth_controller.login)
+    .all("/logout",Auth_controller.logout)
 module.exports = router;

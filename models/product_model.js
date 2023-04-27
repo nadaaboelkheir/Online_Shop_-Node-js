@@ -14,7 +14,7 @@ exports.get_all_product = async () => {
   try {
     await mongoose.connect(DB_URL);
     const products = await Product_model.find({});
-    console.log(products)
+    // console.log(products)
     mongoose.disconnect();
     return products;
   } catch (error) {
@@ -25,7 +25,7 @@ exports.get_filtered_product = async (category) => {
   try {
     await mongoose.connect(DB_URL);
     const filter_products = await Product_model.find({ category: category });
-    console.log(filter_products)
+    // console.log(filter_products)
     mongoose.disconnect();
     return filter_products;
   } catch (error) {
