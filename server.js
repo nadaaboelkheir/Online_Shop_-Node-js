@@ -6,12 +6,15 @@ const product_route = require('./routes/product_route')
 const Auth_route = require('./routes/Auth_route')
 const  session=require('express-session')
 const StoreSession=require('connect-mongodb-session')(session) 
+require ('dotenv').config()
+const DB_URL = process.env.DB_URL
 // constructor ==> storesession
+const flash =require('connect-flash')
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'images')))
-
+app.use(flash())
 const STORE = new StoreSession({
-    uri :'mongodb://localhost:27017/Online_Shop'
+    uri :DB_URL
     , collection:'sessions'
 })
 

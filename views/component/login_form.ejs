@@ -6,7 +6,15 @@
         <input type="submit" value="login" class="btn btn-primary">
     </form>
     <br>
-    <div>
-        Don't have account ? <a href="/signup">Create Account</a>
-    </div>
+
+    <% if (autherror){ %>
+        <p class="alert alert-danger">
+            <%= autherror %>
+        </p>
+        <% } %>
+
+            <br>
+            <div>
+                Don't have account ? <a href="/signup">Create Account</a>
+            </div>
 </div>

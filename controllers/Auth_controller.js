@@ -3,7 +3,9 @@ const Auth_model = require('../models/Auth_model')
 exports.get_signup = async (req, res, next) => {
 
     try {
-        res.render("signup")
+        res.render("signup",{
+            autherror:req.flash("autherror")[0]
+        })
     }
     catch (err) {
         next(err);
@@ -12,7 +14,9 @@ exports.get_signup = async (req, res, next) => {
 exports.get_login = async (req, res, next) => {
 
     try {
-        res.render("login")
+        res.render("login",{
+            autherror:req.flash("autherror")[0]
+        })
     }
     catch (err) {
         next(err);
@@ -30,6 +34,7 @@ exports.post_signup = async (req, res, next) => {
 
     }
     catch (err) {
+        req.flash("autherror",err.toString())
         res.redirect("signup")
         next(err);
     }
@@ -43,10 +48,11 @@ exports.login = async (req, res, next) => {
         req.session.user_id = user_id
         // save session
         res.redirect("/")
-
+    
     }
 
     catch (err) {
+        req.flash("autherror",err.toString())
         res.redirect("login")
         next(err);
     }
